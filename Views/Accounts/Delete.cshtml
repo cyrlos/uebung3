@@ -1,0 +1,34 @@
+@model SocialMedia.Models.User
+
+@{
+    ViewData["Title"] = "Account löschen";
+}
+
+<h1>Account löschen</h1>
+
+<div class="alert alert-danger">
+    <strong>Achtung!</strong>
+    Dein Account wird dauerhaft gelöscht.
+</div>
+
+<p>
+    Möchtest du den Account
+    <strong>@Model.Username</strong>
+    wirklich löschen?
+</p>
+
+<form asp-action="Delete"
+      method="post">
+
+    <button type="submit"
+            class="btn btn-danger">
+        Ja, Account löschen
+    </button>
+
+    <a asp-controller="Home"
+       asp-action="Index"
+       class="btn btn-secondary">
+        Abbrechen
+    </a>
+
+</form>

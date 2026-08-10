@@ -1,0 +1,58 @@
+@model SocialMedia.Models.Post
+
+@{
+    ViewData["Title"] = "Post erstellen";
+}
+
+<h1>Post erstellen</h1>
+
+<form asp-action="Create"
+      method="post"
+      enctype="multipart/form-data">
+
+    <div asp-validation-summary="ModelOnly"
+         class="text-danger"></div>
+
+    <div class="mb-3">
+
+        <label asp-for="Text"
+               class="form-label">
+            Text
+        </label>
+
+        <textarea asp-for="Text"
+                  class="form-control"
+                  rows="4"
+                  placeholder="Was möchtest du posten?">
+        </textarea>
+
+        <span asp-validation-for="Text"
+              class="text-danger">
+        </span>
+
+    </div>
+
+    <div class="mb-3">
+
+        <label class="form-label">
+            Foto
+        </label>
+
+        <input type="file"
+               name="image"
+               class="form-control"
+               accept="image/*" />
+
+    </div>
+
+    <button type="submit"
+            class="btn btn-primary">
+        Post erstellen
+    </button>
+
+    <a asp-action="Index"
+       class="btn btn-secondary">
+        Abbrechen
+    </a>
+
+</form>

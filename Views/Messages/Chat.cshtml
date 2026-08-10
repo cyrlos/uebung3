@@ -1,0 +1,80 @@
+﻿@model IEnumerable<SocialMedia.Models.Message>
+
+@{
+    ViewData["Title"] = "Chat";
+
+    var otherUser = ViewBag.OtherUser
+        as SocialMedia.Models.User;
+
+    var currentUserId =
+        Context.Session.GetInt32("UserId");
+}
+
+<h1>
+    Chat mit @otherUser.Username
+</h1>
+
+<div class="border rounded p-3 mb-3">
+
+    @if (!Model.Any())
+    {
+        <p class="text-muted">
+            Noch keine Nachrichten.
+        </p>
+    }
+    else
+    {
+        @foreach (var message in Model)
+        {
+            <div class="mb-3">
+
+                <strong>
+                    @message.Sender.Username
+                </strong>
+
+                <small class="text-muted">
+                    @message.Date.ToString("dd.MM.yyyy HH:mm")
+                </small>
+
+                <div>
+                    @message.Text
+                </div>
+
+            </div>
+        }
+    }
+
+</div>
+
+<form asp-action="Send"
+      method="post">
+
+    <input type="hidden"
+           name="receiverId"
+           value="@otherUser.Id" />
+
+    <div class="input-group">
+
+        <input type="text"
+               name="text"
+               class="form-control"
+               placeholder="Nachricht schreiben..."
+               required />
+
+        <button type="submit"
+                class="btn btn-primary">
+            Senden
+        </button>
+
+    </div>
+
+</form>
+
+<div class="mt-3">
+
+    <a asp-action="Index"
+       class="btn btn-secondary">
+        Zurück
+    </a>
+
+</div>

@@ -1,0 +1,56 @@
+@model SocialMedia.Models.User
+
+@{
+    ViewData["Title"] = "Registrieren";
+}
+
+<h1>Registrieren</h1>
+
+<form asp-action="Register" method="post">
+
+    <div asp-validation-summary="ModelOnly"
+         class="text-danger"></div>
+
+    <div class="mb-3">
+        <label asp-for="Username"
+               class="form-label">
+            Benutzername
+        </label>
+
+        <input asp-for="Username"
+               class="form-control" />
+
+        <span asp-validation-for="Username"
+              class="text-danger">
+        </span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Password"
+               class="form-label">
+            Passwort
+        </label>
+
+        <input asp-for="Password"
+               type="password"
+               class="form-control" />
+
+        <span asp-validation-for="Password"
+              class="text-danger">
+        </span>
+    </div>
+
+    <button type="submit"
+            class="btn btn-primary">
+        Registrieren
+    </button>
+
+</form>
+
+<p class="mt-3">
+    Bereits registriert?
+
+    <a asp-action="Login">
+        Zum Login
+    </a>
+</p>

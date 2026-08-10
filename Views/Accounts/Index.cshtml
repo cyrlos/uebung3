@@ -1,0 +1,35 @@
+@model SocialMedia.Models.User
+
+@{
+    ViewData["Title"] = "Mein Account";
+}
+
+<h1>Mein Account</h1>
+
+<div class="card" style="max-width: 500px;">
+
+    <div class="card-body">
+
+        <h5 class="card-title">
+            @Model.Username
+        </h5>
+
+        <p class="text-muted">
+            Angemeldeter Benutzer
+        </p>
+
+        <a asp-controller="Accounts"
+           asp-action="Delete"
+           class="btn btn-danger">
+            Account löschen
+        </a>
+
+        <a asp-controller="Accounts"
+           asp-action="Logout"
+           class="btn btn-secondary">
+            Logout
+        </a>
+
+    </div>
+
+</div>
